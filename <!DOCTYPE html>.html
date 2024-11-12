@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>مرحباً بك!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحباً بك في موقع حازم التجريبي!:</h1>
+    <div id="step1">
+        <p>من فضلك، اكتب اسمك:</p>
+        <input type="text" id="name" placeholder="اكتب اسمك هنا">
+        <button onclick="askName()">إرسال</button>
+    </div>
+    
+    <div id="step2" style="display: none;">
+        <p id="greeting"></p>
+        <p>كيف حالك اليوم؟</p>
+        <input type="text" id="status" placeholder="اكتب حالك هنا">
+        <button onclick="askStatus()">إرسال</button>
+    </div>
+
+    <div id="response" style="display: none;">
+        <p id="finalResponse"></p>
+    </div>
+
+    <script>
+        function askName() {
+            const name = document.getElementById("name").value;
+            if (name) {
+                document.getElementById("greeting").innerText = `مرحباً بك، سررت بلقائك يا ${name}!`;
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                alert("من فضلك، اكتب اسمك!");
+            }
+        }
+
+        function askStatus() {
+            const status = document.getElementById("status").value;
+            if (status) {
+                document.getElementById("finalResponse").innerText = `أتمنى لك يوماً رائعاً، ويسعدني أنك تشعر بأنك ${status}.`;
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("response").style.display = "block";
+            } else {
+                alert("من فضلك، اكتب حالك!");
+            }
+        }
+    </script>
+</body>
+</html>
